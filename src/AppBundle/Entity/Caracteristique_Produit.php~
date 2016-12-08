@@ -14,13 +14,13 @@ class Caracteristique_Produit
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Caracteristique", inversedBy="caracteristique_produit")
+     * @ORM\ManyToOne(targetEntity="Caracteristique", inversedBy="caracteristiqueP")
      */
     private $caracteristique;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="caracteristique_produit")
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="caracteristiqueP")
      */
     private $produit;
     
@@ -30,4 +30,5 @@ class Caracteristique_Produit
      * @ORM\Column(name="valeur", type="string", length=255)
      */
     private $valeur;
+
 }

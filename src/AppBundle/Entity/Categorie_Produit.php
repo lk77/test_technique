@@ -14,15 +14,16 @@ class Categorie_Produit
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categorie_produit")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categorieP"))
      */
     private $categorie;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="categorie_produit")
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="categorieP"))
      */
     private $produit;
+
 
     /**
      * Set categorie

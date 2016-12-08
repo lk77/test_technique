@@ -36,18 +36,22 @@ class Categorie
     private $description;
     
     /**
-     * @ORM\OneToMany(targetEntity="Categorie_Produit", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="Categorie_Produit", mappedBy="categorie",cascade={"persist"}))
      */
-    private $categorie_produit;
-
-
+    private $categorieP;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Caracteristique", mappedBy="categorie",cascade={"persist"}))
+     */
+    private $caracteristique;
     
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->categorie_produit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorieP = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->caracteristique = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -109,36 +113,70 @@ class Categorie
     }
 
     /**
-     * Add categorieProduit
+     * Add categorieP
      *
-     * @param \AppBundle\Entity\Categorie_Produit $categorieProduit
+     * @param \AppBundle\Entity\Categorie_Produit $categorieP
      *
      * @return Categorie
      */
-    public function addCategorieProduit(\AppBundle\Entity\Categorie_Produit $categorieProduit)
+    public function addCategorieP(\AppBundle\Entity\Categorie_Produit $categorieP)
     {
-        $this->categorie_produit[] = $categorieProduit;
+        $this->categorieP[] = $categorieP;
 
         return $this;
     }
 
     /**
-     * Remove categorieProduit
+     * Remove categorieP
      *
-     * @param \AppBundle\Entity\Categorie_Produit $categorieProduit
+     * @param \AppBundle\Entity\Categorie_Produit $categorieP
      */
-    public function removeCategorieProduit(\AppBundle\Entity\Categorie_Produit $categorieProduit)
+    public function removeCategorieP(\AppBundle\Entity\Categorie_Produit $categorieP)
     {
-        $this->categorie_produit->removeElement($categorieProduit);
+        $this->categorieP->removeElement($categorieP);
     }
 
     /**
-     * Get categorieProduit
+     * Get categorieP
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCategorieProduit()
+    public function getCategorieP()
     {
-        return $this->categorie_produit;
+        return $this->categorieP;
+    }
+
+    /**
+     * Add caracteristique
+     *
+     * @param \AppBundle\Entity\Caracteristique $caracteristique
+     *
+     * @return Categorie
+     */
+    public function addCaracteristique(\AppBundle\Entity\Caracteristique $caracteristique)
+    {
+        $this->caracteristique[] = $caracteristique;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristique
+     *
+     * @param \AppBundle\Entity\Caracteristique $caracteristique
+     */
+    public function removeCaracteristique(\AppBundle\Entity\Caracteristique $caracteristique)
+    {
+        $this->caracteristique->removeElement($caracteristique);
+    }
+
+    /**
+     * Get caracteristique
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristique()
+    {
+        return $this->caracteristique;
     }
 }

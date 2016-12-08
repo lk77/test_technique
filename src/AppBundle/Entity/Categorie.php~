@@ -38,9 +38,11 @@ class Categorie
     /**
      * @ORM\OneToMany(targetEntity="Categorie_Produit", mappedBy="categorie")
      */
-    private $categorie_produit;
-
-
+    private $categorieP;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Caracteristique", mappedBy="categorie")
+     */
+    private $caracteristique;
     
 }
-

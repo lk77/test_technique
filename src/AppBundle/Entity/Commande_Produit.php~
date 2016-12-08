@@ -14,13 +14,13 @@ class Commande_Produit
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Commande", inversedBy="commande_produit")
+     * @ORM\ManyToOne(targetEntity="Commande", inversedBy="commandeP")
      */
     private $commande;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="commande_produit")
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="commandeP")
      */
     private $produit;
 
@@ -38,6 +38,4 @@ class Commande_Produit
      */
     private $prix;
 
-
-    
 }

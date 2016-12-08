@@ -38,9 +38,11 @@ class Caracteristique
     /**
      * @ORM\OneToMany(targetEntity="Caracteristique_Produit", mappedBy="caracteristique")
      */
-    private $caracteristique_produit;
-
-
+    private $caracteristiqueP;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Categorie", inversedBy="caracteristique")
+     */
+    private $categorie;
     
 }
-

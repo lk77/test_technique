@@ -34,6 +34,13 @@ class Produit
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="text")
+     */
+    private $image_url;
 
     /**
      * @var float
@@ -52,19 +59,16 @@ class Produit
     /**
      * @ORM\OneToMany(targetEntity="Commande_Produit", mappedBy="produit")
      */
-    private $commande_produit;
+    private $commandeP;
 
     /**
      * @ORM\OneToMany(targetEntity="Categorie_Produit", mappedBy="produit")
      */
-    private $categorie_produit;
+    private $categorieP;
     
     /**
      * @ORM\OneToMany(targetEntity="Caracteristique_Produit", mappedBy="produit")
      */
-    private $caracteristique_produit;
-
-
-   
+    private $caracteristiqueP;
+    
 }
-

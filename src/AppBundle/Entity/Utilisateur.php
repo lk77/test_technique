@@ -60,15 +60,18 @@ class Utilisateur extends BaseUser
 
     
     
-    public function __construct()
+    public function __construct($username,$password,$email,$nom = 'inconnu',$prenom = 'inconnu',$adresse = 'inconnu',$code_postal = 0, $ville = 'inconnu' )
     {
         parent::__construct();
-        //Permet l'ajout d'utilisateurs en ligne de commande
-        $this->nom = 'inconnu';
-        $this->prenom = 'inconnu';
-        $this->adresse = 'inconnu';
-        $this->ville = 'inconnu';
-        $this->code_postal = 0;
+        parent::setUsername($username);
+        parent::setPlainPassword($password);
+        parent::setEmail($email);
+        parent::setEnabled(true);
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->adresse = $adresse;
+        $this->ville = $ville;
+        $this->code_postal = $code_postal;
         
     }
 

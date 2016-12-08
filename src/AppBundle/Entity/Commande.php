@@ -43,24 +43,21 @@ class Commande
     private $statut;
     
     /**
-     * @ORM\OneToMany(targetEntity="Commande_Produit", mappedBy="commande")
+     * @ORM\OneToMany(targetEntity="Commande_Produit", mappedBy="commande",cascade={"persist"}))
      */
-    private $commande_produit;
+    private $commandeP;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="commande")
+     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="commande",cascade={"persist"}))
      */
-    private $utilisateur;
-
-
-
-  
+    private $utilisateur; 
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->commande_produit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commandeP = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -146,37 +143,37 @@ class Commande
     }
 
     /**
-     * Add commandeProduit
+     * Add commandeP
      *
-     * @param \AppBundle\Entity\Commande_Produit $commandeProduit
+     * @param \AppBundle\Entity\Commande_Produit $commandeP
      *
      * @return Commande
      */
-    public function addCommandeProduit(\AppBundle\Entity\Commande_Produit $commandeProduit)
+    public function addCommandeP(\AppBundle\Entity\Commande_Produit $commandeP)
     {
-        $this->commande_produit[] = $commandeProduit;
+        $this->commandeP[] = $commandeP;
 
         return $this;
     }
 
     /**
-     * Remove commandeProduit
+     * Remove commandeP
      *
-     * @param \AppBundle\Entity\Commande_Produit $commandeProduit
+     * @param \AppBundle\Entity\Commande_Produit $commandeP
      */
-    public function removeCommandeProduit(\AppBundle\Entity\Commande_Produit $commandeProduit)
+    public function removeCommandeP(\AppBundle\Entity\Commande_Produit $commandeP)
     {
-        $this->commande_produit->removeElement($commandeProduit);
+        $this->commandeP->removeElement($commandeP);
     }
 
     /**
-     * Get commandeProduit
+     * Get commandeP
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCommandeProduit()
+    public function getCommandeP()
     {
-        return $this->commande_produit;
+        return $this->commandeP;
     }
 
     /**

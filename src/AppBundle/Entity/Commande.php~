@@ -45,15 +45,11 @@ class Commande
     /**
      * @ORM\OneToMany(targetEntity="Commande_Produit", mappedBy="commande")
      */
-    private $commande_produit;
+    private $commandeP;
     
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="commande")
      */
-    private $utilisateur;
-
-
-
-  
+    private $utilisateur; 
+    
 }
-
