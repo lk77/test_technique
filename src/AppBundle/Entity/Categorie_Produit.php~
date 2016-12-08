@@ -1,0 +1,26 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Categorie_Produit
+ *
+ * @ORM\Table(name="categorie_produit")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategorieProduitRepository")
+ */
+class Categorie_Produit
+{
+    /**
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categorie_produit")
+     */
+    private $categorie;
+
+    /**
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="categorie_produit")
+     */
+    private $produit;
+}

@@ -1,0 +1,46 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Caracteristique
+ *
+ * @ORM\Table(name="caracteristique")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CaracteristiqueRepository")
+ */
+class Caracteristique
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="format", type="string", length=255)
+     */
+    private $format;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Caracteristique_Produit", mappedBy="caracteristique")
+     */
+    private $caracteristique_produit;
+
+
+    
+}
+
