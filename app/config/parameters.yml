@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: test_technique
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: a28050a55fd88a05216fa69cf76c7562734e6f45
+    google_analytics_json_key: ../app/Resources/analytics/testTechnique-c06981a2ea8c.json
+    google_analytics_view_id: '135757722'

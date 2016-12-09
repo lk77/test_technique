@@ -10,6 +10,7 @@ class LoadUtilisateurData extends AbstractFixture implements OrderedFixtureInter
 
     public function load(ObjectManager $manager) {
         $utilisateurs = array(
+            array("admin","admin","admin@admin.com","admin","admin","admin","69001","Lyon"),
             array("c.parizau","123456","c.parizau@gmail.com", "Baptiste", "Parizeau", "6, rue de Penthièvre", "29000", "QUIMPER"),
             array("a.mouet","4646","a.mouet@orange.fr", "Apolline", "Mouet", "88, rue Gontier-Patin", "34300", "AGDE"),
             array("la_montagne97","6731", "la_montagne97@laposte.net","Nadine", "Lamontagne", "52, Avenue Millies Lacroix", "97610", "DZAOUDZI"),
@@ -18,9 +19,10 @@ class LoadUtilisateurData extends AbstractFixture implements OrderedFixtureInter
             array("c.vertefeuille","41116", "c.vertefeuille@laposte.net","Christine", "Vertefeuille", "80, Rue du Limas", "21200", "BEAUNE"),
             array("camille.savard","871", "camille.savard@gmail.com","Camille", "Savard", "78, rue Gouin de Beauchesne", "93400", "SAINT-OUEN"),
             array("l.thibault","wordpass89", "l.thibault@gmail.com","Lea", "Thibault", "89, rue Porte d'Orange", "81100", "CASTRES"));
-        for ($i = 0; $i < 7; $i++) {
-            $reflector = new \ReflectionClass('AppBundle\Entity\Utilisateur');
+        for ($i = 0; $i < 8; $i++) {
+            $reflector = new \ReflectionClass('UserBundle\Entity\Utilisateur');
             $utilisateur = $reflector->newInstanceArgs($utilisateurs[$i]);
+            $i == 0 ? $utilisateur->setRoles(array("ROLE_ADMIN" => "ROLE_ADMIN")) : $utilisateur->setRoles(array("ROLE_USER" => "ROLE_USER"));
             $manager->persist($utilisateur);
             $manager->flush();
             $this->addReference('utilisateur' . $i, $utilisateur);

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,15 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
  */
-class Utilisateur extends BaseUser
-{
+class Utilisateur extends BaseUser {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var string
      *
@@ -31,37 +31,34 @@ class Utilisateur extends BaseUser
      * @ORM\Column(name="prenom", type="string", length=255,options={"default":"inconnu"})
      */
     private $prenom;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255,options={"default":"inconnu"})
      */
     private $adresse;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=255,options={"default":"inconnu"})
      */
     private $ville;
-    
+
     /**
      * @var integer
      *
      * @ORM\Column(name="code_postal", type="integer",options={"default":"0"})
      */
     private $code_postal;
-    
+
     /**
-     * @ORM\OneToMany(targetEntity="Commande", mappedBy="utilisateur")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="utilisateur")
      */
     private $commande;
 
-    
-    
-    public function __construct($username,$password,$email,$nom = 'inconnu',$prenom = 'inconnu',$adresse = 'inconnu',$code_postal = 0, $ville = 'inconnu' )
-    {
+    public function __construct($username = 'inconnu', $password = 'inconnu', $email = 'inconnu', $nom = 'inconnu', $prenom = 'inconnu', $adresse = 'inconnu', $code_postal = 0, $ville = 'inconnu') {
         parent::__construct();
         parent::setUsername($username);
         parent::setPlainPassword($password);
@@ -72,7 +69,6 @@ class Utilisateur extends BaseUser
         $this->adresse = $adresse;
         $this->ville = $ville;
         $this->code_postal = $code_postal;
-        
     }
 
     /**
@@ -82,8 +78,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -94,8 +89,7 @@ class Utilisateur extends BaseUser
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -106,8 +100,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
 
         return $this;
@@ -118,8 +111,7 @@ class Utilisateur extends BaseUser
      *
      * @return string
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -130,8 +122,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse) {
         $this->adresse = $adresse;
 
         return $this;
@@ -142,8 +133,7 @@ class Utilisateur extends BaseUser
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -154,8 +144,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -166,8 +155,7 @@ class Utilisateur extends BaseUser
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -178,8 +166,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function setCodePostal($codePostal)
-    {
+    public function setCodePostal($codePostal) {
         $this->code_postal = $codePostal;
 
         return $this;
@@ -190,8 +177,7 @@ class Utilisateur extends BaseUser
      *
      * @return integer
      */
-    public function getCodePostal()
-    {
+    public function getCodePostal() {
         return $this->code_postal;
     }
 
@@ -202,8 +188,7 @@ class Utilisateur extends BaseUser
      *
      * @return Utilisateur
      */
-    public function addCommande(\AppBundle\Entity\Commande $commande)
-    {
+    public function addCommande(\AppBundle\Entity\Commande $commande) {
         $this->commande[] = $commande;
 
         return $this;
@@ -214,8 +199,7 @@ class Utilisateur extends BaseUser
      *
      * @param \AppBundle\Entity\Commande $commande
      */
-    public function removeCommande(\AppBundle\Entity\Commande $commande)
-    {
+    public function removeCommande(\AppBundle\Entity\Commande $commande) {
         $this->commande->removeElement($commande);
     }
 
@@ -224,8 +208,8 @@ class Utilisateur extends BaseUser
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCommande()
-    {
+    public function getCommande() {
         return $this->commande;
     }
+
 }

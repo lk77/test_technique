@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="commande_produit")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandeProduitRepository")
  */
-class Commande_Produit
-{
+class Commande_Produit {
+
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Commande", inversedBy="commandeP")
@@ -30,7 +30,7 @@ class Commande_Produit
      * @ORM\Column(name="quantite", type="integer")
      */
     private $quantite;
-    
+
     /**
      * @var float
      *
@@ -38,6 +38,16 @@ class Commande_Produit
      */
     private $prix;
 
+    public function __toString() {
+        return $this->getProduit() != null ? $this->getProduit()->getTitre() : "null";
+    }
+
+    public function getSingleField() {
+        if($this->getProduit() != null){
+            return $this->getQuantite()." x ".$this->getProduit()->getTitre(). " = ".$this->getPrix()."€";
+        }
+        return null;
+    }
 
     /**
      * Set quantite
@@ -46,8 +56,7 @@ class Commande_Produit
      *
      * @return Commande_Produit
      */
-    public function setQuantite($quantite)
-    {
+    public function setQuantite($quantite) {
         $this->quantite = $quantite;
 
         return $this;
@@ -58,8 +67,7 @@ class Commande_Produit
      *
      * @return integer
      */
-    public function getQuantite()
-    {
+    public function getQuantite() {
         return $this->quantite;
     }
 
@@ -70,8 +78,7 @@ class Commande_Produit
      *
      * @return Commande_Produit
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -82,8 +89,7 @@ class Commande_Produit
      *
      * @return float
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -94,8 +100,7 @@ class Commande_Produit
      *
      * @return Commande_Produit
      */
-    public function setCommande(\AppBundle\Entity\Commande $commande)
-    {
+    public function setCommande(\AppBundle\Entity\Commande $commande) {
         $this->commande = $commande;
 
         return $this;
@@ -106,8 +111,7 @@ class Commande_Produit
      *
      * @return \AppBundle\Entity\Commande
      */
-    public function getCommande()
-    {
+    public function getCommande() {
         return $this->commande;
     }
 
@@ -118,8 +122,7 @@ class Commande_Produit
      *
      * @return Commande_Produit
      */
-    public function setProduit(\AppBundle\Entity\Produit $produit)
-    {
+    public function setProduit(\AppBundle\Entity\Produit $produit) {
         $this->produit = $produit;
 
         return $this;
@@ -130,8 +133,8 @@ class Commande_Produit
      *
      * @return \AppBundle\Entity\Produit
      */
-    public function getProduit()
-    {
+    public function getProduit() {
         return $this->produit;
     }
+
 }

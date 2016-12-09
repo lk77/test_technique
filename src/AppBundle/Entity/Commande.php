@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="commande")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandeRepository")
  */
-class Commande
-{
+class Commande {
+
     /**
      * @var int
      *
@@ -41,23 +41,26 @@ class Commande
      * @ORM\Column(name="statut", type="string", length=255)
      */
     private $statut;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Commande_Produit", mappedBy="commande",cascade={"persist"}))
      */
     private $commandeP;
-    
+
     /**
-     * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="commande",cascade={"persist"}))
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Utilisateur", inversedBy="commande",cascade={"persist"}))
      */
-    private $utilisateur; 
-    
+    private $utilisateur;
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->commandeP = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return $this->id . " - " . $this->date;
     }
 
     /**
@@ -65,8 +68,7 @@ class Commande
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -77,8 +79,7 @@ class Commande
      *
      * @return Commande
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -89,8 +90,7 @@ class Commande
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -101,8 +101,7 @@ class Commande
      *
      * @return Commande
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -113,8 +112,7 @@ class Commande
      *
      * @return float
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -125,8 +123,7 @@ class Commande
      *
      * @return Commande
      */
-    public function setStatut($statut)
-    {
+    public function setStatut($statut) {
         $this->statut = $statut;
 
         return $this;
@@ -137,54 +134,58 @@ class Commande
      *
      * @return string
      */
-    public function getStatut()
-    {
+    public function getStatut() {
         return $this->statut;
     }
 
     /**
      * Add commandeP
      *
-     * @param \AppBundle\Entity\Commande_Produit $commandeP
+     * @param \AppBundle\Entity\Produit $produit
      *
-     * @return Commande
+     * @return Produit
      */
-    public function addCommandeP(\AppBundle\Entity\Commande_Produit $commandeP)
-    {
-        $this->commandeP[] = $commandeP;
+    public function addCommandeP(\AppBundle\Entity\Produit $produit = null) {
+
+        $commandeP = new Commande_Produit();
+        $commandeP->setCommande($this);
+        $commandeP->setProduit($produit);
+        $this->commandeP = $commandeP;
 
         return $this;
     }
-
+    
     /**
      * Remove commandeP
      *
-     * @param \AppBundle\Entity\Commande_Produit $commandeP
+     * @param \AppBundle\Entity\Produit $produit
      */
-    public function removeCommandeP(\AppBundle\Entity\Commande_Produit $commandeP)
+    public function removeCommandeP(\AppBundle\Entity\Produit $produit)
     {
-        $this->commandeP->removeElement($commandeP);
+        foreach($this->commandeP as $commandeP){
+            if($commandeP->getProduit()->getId() == $produit->getId()){
+                $this->commandeP->removeElement($commandeP);
+            }
+        }
     }
 
     /**
      * Get commandeP
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \AppBundle\Entity\Caommande_Produit
      */
-    public function getCommandeP()
-    {
+    public function getCommandeP() {
         return $this->commandeP;
     }
 
     /**
      * Set utilisateur
      *
-     * @param \AppBundle\Entity\Utilisateur $utilisateur
+     * @param \UserBundle\Entity\Utilisateur $utilisateur
      *
      * @return Commande
      */
-    public function setUtilisateur(\AppBundle\Entity\Utilisateur $utilisateur = null)
-    {
+    public function setUtilisateur(\UserBundle\Entity\Utilisateur $utilisateur = null) {
         $this->utilisateur = $utilisateur;
 
         return $this;
@@ -193,10 +194,10 @@ class Commande
     /**
      * Get utilisateur
      *
-     * @return \AppBundle\Entity\Utilisateur
+     * @return \UserBundle\Entity\Utilisateur
      */
-    public function getUtilisateur()
-    {
+    public function getUtilisateur() {
         return $this->utilisateur;
     }
+
 }

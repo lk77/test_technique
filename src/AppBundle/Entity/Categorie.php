@@ -53,6 +53,10 @@ class Categorie
         $this->categorieP = new \Doctrine\Common\Collections\ArrayCollection();
         $this->caracteristique = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    public function __toString() {
+        return $this->titre;
+    }
 
     /**
      * Get id

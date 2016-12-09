@@ -13,13 +13,20 @@ use Doctrine\ORM\Mapping as ORM;
 class Caracteristique_Produit
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Caracteristique", inversedBy="caracteristiqueP")
      */
     private $caracteristique;
 
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Produit", inversedBy="caracteristiqueP")
      */
     private $produit;
@@ -31,6 +38,9 @@ class Caracteristique_Produit
      */
     private $valeur;
 
+    public function __toString() {
+        return $this->getCaracteristique() != null ? $this->getCaracteristique()->getNom() : "null";
+    }
 
     /**
      * Set valeur
@@ -102,5 +112,15 @@ class Caracteristique_Produit
     public function getProduit()
     {
         return $this->produit;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

@@ -13,17 +13,27 @@ use Doctrine\ORM\Mapping as ORM;
 class Categorie_Produit
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categorieP"))
      */
     private $categorie;
 
     /**
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="categorieP"))
+     * @ORM\OneToOne(targetEntity="Produit", inversedBy="categorieP"))
      */
     private $produit;
 
+    public function __toString() {
+        return $this->getCategorie() != null ? $this->getCategorie()->getTitre() : "null";
+    }
 
     /**
      * Set categorie
@@ -71,5 +81,15 @@ class Categorie_Produit
     public function getProduit()
     {
         return $this->produit;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
