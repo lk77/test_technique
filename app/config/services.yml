@@ -1,9 +1,9 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/service_container.html
 parameters:
-#    parameter_name: value
+    app.root: "%kernel.root_dir%/Resources/analytics/data"
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.analytics.helper:
+        class:        AdminBundle\Helper\AnalyticsHelper
+        arguments: ["@google_analytics_api.api",%google_analytics_view_id%,%app.root%]

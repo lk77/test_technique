@@ -9,6 +9,11 @@ _profiler:
 _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix:   /_error
+    
+google_analytics_api:
+    resource: "@GoogleAnalyticsApi/Controller/"
+    type:     annotation
+    prefix:   /analytics-api
 
 _main:
     resource: routing.yml

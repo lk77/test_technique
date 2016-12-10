@@ -1,16 +1,40 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "@AdminBundle/layout.html.twig" %}
+{% block body_javascript %}
+    <script src="//code.highcharts.com/4.1.8/highcharts.js"></script>
+    <script src="//code.highcharts.com/4.1.8/modules/exporting.js"></script>
+    <script type="text/javascript">
+        {% for highchart in highcharts %}
+            {{ chart(highchart) }}
+        {% endfor %}
+    </script>{% endblock body_javascript %}
+    {% block content %}
+        {% block flash_messages %}
+            {{ include(_entity_config is defined ? _entity_config.templates.flash_messages : '@EasyAdmin/default/flash_messages.html.twig') }}
+        {% endblock flash_messages %}
+
+        <section class="content-header">
+            {% block content_header %}
+                <h1 class="title">{% block content_title %}{% endblock %}</h1>
+            {% endblock content_header %}
+        </section>
+
+        <section id="main" class="content">
+            {% block main %}
+
+
+
+                {% for name,highchart in highcharts %}
+                    <div id="{{name}}" style="width: 33%; height: 15%; margin: 0 auto;float:left;"></div>
+                {% endfor %}
+
+                {#<div id="bounceRate" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
+                <div id="avgTimeOnPage" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
+                <div id="pageViewsPerSession" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
+                <div id="percentNewVisits" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
+                <div id="pageViews" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
+                <div id="avgPageLoadTime" style="min-width: 200px; height: 200px; margin: 0 auto"></div>#}
+
+
+            {% endblock %}
+        </section>
+    {% endblock content %}
