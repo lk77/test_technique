@@ -55,6 +55,7 @@ assetic:
 sp_bower:
     bundles:
         AppBundle: ~
+        AdminBundle: ~
         
 vich_uploader:
     db_driver: orm
@@ -71,7 +72,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     paths:
-        '%kernel.root_dir%/../src/AdminBundle/Resources/view': AdminBundle
+        '%kernel.root_dir%/../src/AdminBundle': AdminBundle
 
 # Doctrine Configuration
 doctrine:

@@ -1,4 +1,4 @@
-{% extends "@AdminBundle/layout.html.twig" %}
+{% extends "@AdminBundle/Resources/view/layout.html.twig" %}
 {% block body_javascript %}
     <script src="//code.highcharts.com/4.1.8/highcharts.js"></script>
     <script src="//code.highcharts.com/4.1.8/modules/exporting.js"></script>
@@ -22,10 +22,19 @@
             {% block main %}
 
 
-
-                {% for name,highchart in highcharts %}
-                    <div id="{{name}}" style="width: 33%; height: 15%; margin: 0 auto;float:left;"></div>
-                {% endfor %}
+                <div id="charts" style="
+                     display: flex;
+                     flex-direction: row;
+                     flex-wrap: wrap;
+                     justify-content: space-around;">
+                    {% for name,highchart in highcharts %}
+                        <div id="{{name}}" style="
+                             width: 400px;
+                             height:400px;
+                             margin: 5px auto;
+                             flex-grow:0.3;"></div>
+                    {% endfor %}
+                </div>
 
                 {#<div id="bounceRate" style="min-width: 200px; height: 200px; margin: 0 auto"></div>
                 <div id="avgTimeOnPage" style="min-width: 200px; height: 200px; margin: 0 auto"></div>

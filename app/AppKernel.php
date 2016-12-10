@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new MediaFigaro\GoogleAnalyticsApi\GoogleAnalyticsApi(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sp\BowerBundle\SpBowerBundle(),
             new AdminBundle\AdminBundle(),
