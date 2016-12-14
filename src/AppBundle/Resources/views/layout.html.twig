@@ -16,6 +16,7 @@
     '@bootstrap_css'
     'bundles/app/css/style.css'
     'bundles/app/css/menu.css'
+    'bundles/app/css/produit.css'
     output='css/main.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -30,7 +31,7 @@
         {% endblock %}
     </head>
     <body>
-        <div class="no-padding" style="height:100%;">
+        <div>
             {% include '@AppBundle/menu.html.twig' %}
             <div class="/*border-contenu*/">
                     {% block content %}

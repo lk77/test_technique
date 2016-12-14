@@ -7,3 +7,7 @@ services:
     admin.analytics.helper:
         class:        AdminBundle\Helper\AnalyticsHelper
         arguments: ["@google_analytics_api.api",%google_analytics_view_id%,%app.root%]
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }

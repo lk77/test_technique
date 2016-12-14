@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block javascript %}
+            {% javascripts
+    'https://code.jquery.com/jquery-2.1.4.js'
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
+    output='js/main.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+        {% block stylesheet %}
+            {% stylesheets
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+    output='css/main.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block title %}
+            <title>Ecom</title>
+        {% endblock %}
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+    <body>
+        <div class="container no-padding">
+            <div class="menu">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid no-padding">  
+                        <div class="collapse navbar-collapse no-padding"> 
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="{{path('sil04_vitrine_accueil')}}">Accueil</a></li> 
+                                <li><a href="{{path('sil04_vitrine_mentions')}}">Mentions légales</a></li>
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div> 
+                </nav>
+            </div>
+            <div class="border-contenu">
+                <div class="contenu">
+                   
+
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="{{ type }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</body>
+</html>

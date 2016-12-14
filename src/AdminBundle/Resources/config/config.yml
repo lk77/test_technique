@@ -14,7 +14,7 @@ easy_admin:
             css:
                 - 'bundles/admin/css/admin.css'
         menu:
-            - { label: 'Accueil', url: '/test_technique/web/app_dev.php' }
+            - { label: 'Accueil', route: 'produit_index' }
             - { label: 'Configuration' }
             - { entity: 'Caracteristique', icon: 'tag' }
             - { entity: 'Categorie', icon: 'sitemap' }
@@ -23,7 +23,7 @@ easy_admin:
             - { entity: 'Produit', icon: 'shopping-cart' }
             - { entity: 'Commande', icon: 'credit-card' }
             - { label: 'Monitoring' }
-            - { label: '30 derniers jours', url: '/test_technique/web/app_dev.php/admin/analytics/', icon: 'area-chart' }      
+            - { label: '30 derniers jours', route: 'analytics_index', icon: 'area-chart' }      
     list:
         actions:
             - { name: 'show', icon: 'search', label: '' }
@@ -109,49 +109,4 @@ easy_admin:
                     - username
                     - email
                     - enabled
-            
-        
-        #{ property: 'tag', type: 'entity', type_options: { class: 'MyEntity', multiple: true, attr: { data-widget: 'select2' } }  }
-        
-#        News:
-#            class: gt3\SiteBundle\Entity\News
-#            list:
-#                fields: [titre,categorie,date,utilisateur,suppression]
-#            form:
-#                fields: [titre,categorie,date,utilisateur,{property: 'suite', type: 'ckeditor' }]
-#        Utilisateurs:
-#            class: gt3\SiteBundle\Entity\Utilisateurs
-#            list:
-#                fields: [nom,mail,level,categorie,equipe]
-#            form:
-#                fields: [nom,description,mail,level,categorie,equipe]
-#        Categorie:
-#            class: gt3\SiteBundle\Entity\Categorie
-#            list:
-#                fields: [id,nom,{property: 'uri', label: 'Lien'},initiales,visibilite,idforum]
-#            form:
-#                fields: [nom,{property: 'uri', label: 'Lien'},initiales,visibilite,idforum]
-#        Rubrique:
-#            class: gt3\SiteBundle\Entity\Rubrique
-#            list:
-#                fields: [nom,{property: 'uri', label: 'Lien'},{property: 'level', label: 'visibilité'},rang,parent,suppression]
-#            form:
-#                fields: [nom,{property: 'uri', label: 'Lien'},level,rang,parent,suppression]
-#        Pages: 
-#            class: gt3\SiteBundle\Entity\Pages
-#        Module:
-#            class: gt3\SiteBundle\Entity\Module
-#        Equipe:
-#            class: gt3\SiteBundle\Entity\Equipe
-#        RangEquipe:
-#            class: gt3\SiteBundle\Entity\RangEquipe
-#        Matchs:
-#            class: gt3\SiteBundle\Entity\Matchs
-#        Webtv:
-#            class: gt3\SiteBundle\Entity\Webtv
-#        EmissionWebtv:
-#            class: gt3\SiteBundle\Entity\EmissionWebtv
-#        EquipeUtilisateurs:
-#            class: gt3\SiteBundle\Entity\EquipeUtilisateurs
-        
            

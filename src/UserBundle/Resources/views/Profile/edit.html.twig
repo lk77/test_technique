@@ -1,0 +1,135 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block content %}
+    <script>
+        $(".user").focusin(function () {
+            $(".inputUserIcon").css("color", "#e74c3c");
+        }).focusout(function () {
+            $(".inputUserIcon").css("color", "white");
+        });
+
+        $(".pass").focusin(function () {
+            $(".inputPassIcon").css("color", "#e74c3c");
+        }).focusout(function () {
+            $(".inputPassIcon").css("color", "white");
+        });
+    </script>
+    <style>
+        @import url(http://weloveiconfonts.com/api/?family=entypo);
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+
+        /* zocial */
+        [class*="entypo-"]:before {
+            font-family: 'entypo', sans-serif;
+            padding-top:10px;
+        }
+
+        *,
+        *:before,
+        *:after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box; 
+        }
+
+
+        h2 {
+            color:rgba(255,255,255,.8);
+            margin-left:12px;
+        }
+
+        body {
+            background: #272125;
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+        form {
+            position:relative;
+            margin: 50px auto;
+            width: 580px;
+            height: auto;
+            background-color:grey;
+        }
+
+        input {
+            padding: 16px;
+            border-radius:7px;
+            border:0px;
+            background: rgba(255,255,255,.2);
+            display: block;
+            margin: 15px;
+            width: 60%;  
+            color:black;
+            font-size:18px;
+            height: 54px;
+            //float:left;
+        }
+        a.button {
+            padding: 16px;
+            border-radius:7px;
+            border:0px;
+            background: rgba(255,255,255,.2);
+            display: block;
+            margin: 15px;
+            width: 60%;  
+            color:black;
+            font-size:18px;
+            height: 54px;
+            margin:auto;
+        }
+        label{
+            //width:50%;
+            float:left;
+            height:54px;
+            width:40%;
+            line-height:54px;
+            text-align:center;
+                
+        }
+        input:focus {
+            outline-color: rgba(0,0,0,0);
+            background: rgba(255,255,255,.95);
+            color: #e74c3c;
+        }
+
+        input.button {
+            padding: 16px;
+            border-radius:7px;
+            border:0px;
+            background: rgba(255,255,255,.2);
+            display: block;
+            margin: 15px;
+            width: 60%;  
+            color:black;
+            font-size:18px;
+            height: 54px;
+            margin:auto;
+        }
+
+        .inputUserIcon {
+            position:absolute;
+            top:68px;
+            right: 80px;
+            color:black;
+        }
+
+        .inputPassIcon {
+            position:absolute;
+            top:136px;
+            right: 80px;
+            color:white;
+        }
+
+        input::-webkit-input-placeholder {
+            color: white;
+        }
+
+        input:focus::-webkit-input-placeholder {
+            color: #e74c3c;
+        }
+
+
+    </style>
+{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+{% endblock content %}

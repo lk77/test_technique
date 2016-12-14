@@ -36,25 +36,40 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                    <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                            <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-lg" type="button">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </span>
+                    <form action="" class="search-form">
+                        <div class="form-group has-feedback">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                            <span class="fa fa-search form-control-feedback"></span>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </div> 
+            </div>
         </div>
-    </nav>
 </div>
 <script>
     $('[data-toggle="slide-collapse"]').on('click', function () {
         $navMenuCont = $($(this).data('target'));
         $navMenuCont.animate({'width': 'toggle'}, 350);
         $('.navbar-header button').toggleClass("hovered");
+    });
+
+    $(document).ready(function () {
+        if ($('.produit_list').length) {
+            $('#search').keyup(function () {
+                $field = $(this);
+                $('#results').html('');
+                if ($field.val().length > 1)
+                {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'produit/ajax/' + $(this).val(),
+                        success: function (data) {
+                            $('.produit_list').html($(data).find('.produit_list').html());
+                        }
+                    });
+                }
+            });
+        }
     });
 </script>

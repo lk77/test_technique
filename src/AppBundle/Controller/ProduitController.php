@@ -34,6 +34,27 @@ class ProduitController extends Controller {
                     'menu' => $config['menu']
         ));
     }
+    
+    /**
+     * Search for produit entites
+     *
+     * @Route("/produit/ajax/{search}", name="produit_ajax")
+     * @Method("GET")
+     */
+    public function ajaxAction($search) {
+        $em = $this->getDoctrine()->getManager();
+
+        $produits = $em->getRepository('AppBundle:Produit')->findByTitre($search);
+        $categories = $em->getRepository('AppBundle:Categorie')->findAll();
+        $config = $this->container->getParameter("app.config");
+
+        return $this->render('@AppBundle/produit/index.html.twig', array(
+                    'produits' => $produits,
+                    'categories' => $categories,
+                    'categorie_id' => null,
+                    'menu' => $config['menu']
+        ));
+    }
 
     /**
      * @Route("/produit/categorie/{id}", name="produit_categorie")

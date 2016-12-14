@@ -1,0 +1,8 @@
+<form action="{{ path("fos_user_profile_edit") }}" method="post" style="background-color:lightgrey;padding:10px;width:350px;border-radius:15px;">
+    <h2><span class="entypo-login"></span> Mon Profil</h2>
+    {{ form_widget(form) }}
+    <div>
+        <input class="button" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+
+</form>

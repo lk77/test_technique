@@ -71,7 +71,7 @@ class LoadProduitData extends AbstractFixture implements OrderedFixtureInterface
                 $caracteristiqueP->setValeur($caracteristique);
                 $produit->addCaracteristiqueP($caracteristiqueP);
             }
-            $produit->setCategorieP($this->getReference('categorie' . $categorie[$i]));
+            $produit->addCategorie($this->getReference('categorie' . $categorie[$i]));
             
             $manager->persist($produit);
             $manager->flush();

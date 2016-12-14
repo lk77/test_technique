@@ -2,34 +2,11 @@
 
 {% block content %}
     <div class="flex">
-       {# <ul class="categorie_list col-lg-2 col-md-2 hidden-sm hidden-xs">
-            
-            {% if categorie_id != null %}
-                <li class="categorie_item">
-                    <a href="{{ path('produit_index') }}"><p class="categorie_nom"><i class="fa fa-chevron-circle-left"></i>  Retour</p></a>
-                </li>
-            {% endif %}
-
-            {% for categorie in categories %}
-                <li class="categorie_item">
-                    {% if categorie.id == categorie_id %}
-                        <a href="{{ path('produit_categorie', { 'id': categorie.id }) }}" class="active">
-                            <p class="categorie_nom">{{categorie.titre}}</p>
-                        </a>
-                    {% else %}
-                        <a href="{{ path('produit_categorie', { 'id': categorie.id }) }}">
-                            <p class="categorie_nom">{{categorie.titre}}</p>
-                        </a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            
-        </ul>#}
         <ul class="produit_list no-padding col-lg-9 col-md-9 col-sm-12 col-xs-12"  style="">
             {% for produit in produits %}
                 <li class="produit_item  col-lg-12">
                     <div class="produit_image">
-                        <img src="/test_technique/web{{ product_images }}/{{ produit.imageUrl}}">
+                        <img src="{{ base_uri }}{{ product_images }}/{{ produit.imageUrl}}">
                     </div>
                     <div class="produit_content">
                         <div class="produit_header">
@@ -40,11 +17,11 @@
                         </div>
                         <div class="produit_footer">
                             {% if produit.quantite == 0 %}
-                                <p class="produit_indisponible">Indisponible</p>
+                                <p class="produit_indisponible">Indis.</p>
                             {% elseif produit.quantite < 5 %}
-                                <p class="produit_quantite_faible">Plus que {{produit.quantite}}!</p>
+                                <p class="produit_quantite_faible">Reste {{produit.quantite}}</p>
                             {% else %}
-                                <p class="produit_quantite">{{produit.quantite}} en Stock</p>
+                                <p class="produit_quantite">Reste {{produit.quantite}}</p>
                             {% endif %}
                             <p class="produit_prix">{{produit.prix}}€</p>
 
@@ -54,133 +31,4 @@
             {% endfor %}
         </ul>
     </div>
-
-    <style>
-        .produit_list{
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            border-width: 1px 0 0 1px;
-            list-style:none;
-        }
-        .produit_item{
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            padding:0;
-            min-height:100px;
-            margin-bottom:15px;
-            background-color: #F5F5F5;
-        }
-        .produit_image{
-            max-width:40%;
-            min-width: 100px;
-            padding:0;
-            display: flex;
-        }
-        .produit_image img {
-            width: 100%;
-            object-fit: contain;
-        }
-
-        .produit_content{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            flex-grow: 1;
-            min-height: 100px;
-            max-width:85%;
-            margin:15px;
-            padding:0;
-        }
-
-        .produit_vente{
-            background-color:#ecebeb;
-            max-width:40%;
-            min-width:200px;
-            padding:0;
-            display: flex;
-        }
-
-        .produit_header{
-            height: 25%;
-            max-width:95%;
-            flex-grow: 1;
-            word-wrap: break-word;
-            display: flex;
-            justify-content:center;
-            align-content:center;
-            flex-direction:column; 
-            text-align:center;
-
-        }
-        .produit_footer{
-            height:15%;
-            max-width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        .produit_desc{
-            height: 60%;
-            max-width:95%;
-            flex-grow: 1;
-            word-wrap: break-word;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            flex-direction: column;
-            line-height: 1;
-            overflow: hidden;
-        }
-        .produit_desc p{
-            margin: 0;
-            height: 80%;
-            overflow: hidden;
-        }
-        .flex{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin-top:5%;
-        }
-        .produit_quantite{
-            min-width: 50%;
-            color:green;
-            margin:0;
-            font-weight: bold;
-            text-align: left;
-        }
-        .produit_quantite_faible{
-            min-width: 50%;
-            color:orange;
-            margin:0;
-            padding:2px;
-            padding:0 10px;
-            font-weight: bold;
-            text-align: left;
-        }
-        .produit_indisponible{
-            min-width:50%;
-            color:orangered;
-            margin:0;
-            padding:2px;
-            padding:0 10px;
-            font-weight: bold;
-            text-align: left;
-        }
-        .produit_prix{
-            min-width:50%;
-            padding:0 10px;
-            margin:0;
-            color:orange;
-            font-weight: bold;
-            text-align: right;
-        }
-
-
-
-
-    </style>
 {% endblock %}

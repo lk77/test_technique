@@ -12,3 +12,4 @@ parameters:
     secret: a28050a55fd88a05216fa69cf76c7562734e6f45
     google_analytics_json_key: ../app/Resources/analytics/testTechnique-c06981a2ea8c.json
     google_analytics_view_id: '94094006'
+    base_uri: /test_technique/web

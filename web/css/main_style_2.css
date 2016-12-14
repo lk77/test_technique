@@ -1,0 +1,275 @@
+body{
+    /*background-color:darkgrey;*/
+    height:100%;
+}
+html{
+    height:100%;
+}
+
+.navbar, .navbar-inverse, ul.navbar-nav,li.active > a{
+    margin:0;
+    border-radius:0;
+    /*border-radius:10px!important;*/
+}
+.navbar-nav li a{
+    height:56px;
+}
+.navbar{
+    /*height:100%!important;*/
+}
+
+
+.container{
+    min-height:100%!important;
+    background: linear-gradient(to right, grey, #2E2E2E);
+    border-radius:15px;
+    padding:10px;
+
+}
+.border-contenu{
+    min-height:95%;
+    background: linear-gradient(to right, grey, #2E2E2E);
+    padding:10px;
+    /*margin:10px;*/
+    /*border-radius:15px;*/
+
+    /*border:1px solid black;*/
+    /*height:100%!important;*/
+
+
+
+}
+.contenu{
+    /* background-color:white;*/
+    background-color:white;
+    min-height:100%;
+    border-radius:10px;
+    padding:10px;
+}
+.no-padding{
+    padding:0;
+    height:100%!important;
+}
+.message{
+    margin:auto;
+    width:100%;
+    height:50px;
+    /*background-color:darkgrey;*/
+}
+.message p{
+    padding:12px;
+    text-align:center;
+}
+
+
+.categorie_item a p{
+    background-color:grey;
+    color:white;
+}
+.categorie_item a.active p{
+    background-color:darkgrey;
+    color:white;
+}
+
+
+
+
+
+.categorie_item{
+    width:100%;
+    float:left;
+    height:40px;
+    line-height:40px;
+    border: 0 solid silver;
+    border-width: 1px 1px 0 0;
+    /*padding:.5em;*/
+    /* background-color:#D7D7D7;
+    background-color:white;
+    /*border:1px solid black;*/
+}
+.categorie_nom{
+    /*float:left;*/
+    /*width:calc(100% - 66px);*/
+    text-align:center;
+    margin:0;
+    /*padding-left:66px;*/
+}
+.categorie_header{
+    background-color:white;
+    float:left;
+    width:100%;
+    text-align:center;
+    /*border-top: 1px solid black;*/
+    /*border-bottom: 1px solid black;*/
+    /*margin-bottom:10px;*/
+}
+.categorie_footer{
+    background-color:white;
+    float:left;
+    height:28px;
+    width:calc(100% - 150px);
+    text-align:center;
+}
+.categorie_desc{
+    float:left;
+    height:20px;
+    width:100%;
+    text-align:center;
+}
+.categorie_list{
+    float:left;
+    list-style:none;
+    padding:0;
+    width:9%;
+    display: inline-block;
+}
+.categorie_action{
+    float:left;
+    width:66px;
+    height:21px;
+    padding:0;
+    list-style:none;
+}
+.categorie_action li{
+    float:left;
+    height:22px;
+}
+.categorie_edit{
+    padding:1px 3px;
+    background-color:#353850;
+    border-radius:5px;   
+}
+.categorie_edit i{
+    width: 16px;
+    height: 13px;
+}
+.categorie_delete{
+    padding:1px 3px;
+    background-color:#A22626;
+    border-radius:5px;   
+}
+.categorie_delete i{
+    width: 16px;
+    height: 13px;
+}
+.categorie_show{
+    padding:1px 3px;
+    background-color:#6AB34B;
+    border-radius:5px;
+}
+.categorie_show i{
+    width: 16px;
+    height: 13px;
+}
+
+
+
+
+.categorie_admin_item{
+    width:25%;
+    float:left;
+    height:60px;
+    border: 0 solid silver;
+    border-width: 0px 1px 1px 0;
+    padding:.5em;
+    /* background-color:#D7D7D7;*/
+    background-color:white;
+    /*border:1px solid black;*/
+}
+.categorie_admin_nom{
+    float:left;
+    width:calc(100% - 66px);
+    text-align:center;
+    margin:0;
+    padding-left:66px;
+}
+.categorie_admin_header{
+    background-color:white;
+    float:left;
+    width:100%;
+    text-align:center;
+    /*border-top: 1px solid black;*/
+    /*border-bottom: 1px solid black;*/
+    /*margin-bottom:10px;*/
+}
+.categorie_admin_footer{
+    background-color:white;
+    float:left;
+    height:28px;
+    width:calc(100% - 150px);
+    text-align:center;
+}
+.categorie_admin_desc{
+    float:left;
+    height:20px;
+    width:100%;
+    text-align:center;
+}
+.categorie_admin_list{
+    border: 0 solid silver;
+    border-width: 1px 0 0 1px;
+    list-style:none;
+    padding:0;
+    width:100%;
+    display: inline-block;
+}
+.categorie_admin_action{
+    float:left;
+    width:66px;
+    height:21px;
+    padding:0;
+    list-style:none;
+}
+.categorie_admin_action li{
+    float:left;
+    height:22px;
+}
+.categorie_admin_edit{
+    padding:1px 3px;
+    background-color:#353850;
+    border-radius:5px;   
+}
+.categorie_admin_edit i{
+    width: 16px;
+    height: 13px;
+}
+.categorie_admin_delete{
+    padding:1px 3px;
+    background-color:#A22626;
+    border-radius:5px;   
+}
+.categorie_admin_delete i{
+    width: 16px;
+    height: 13px;
+}
+.categorie_admin_show{
+    padding:1px 3px;
+    background-color:#6AB34B;
+    border-radius:5px;
+}
+.categorie_admin_show i{
+    width: 16px;
+    height: 13px;
+}
+
+
+
+
+.commande_list{
+    border:1px solid black;
+    width:100%;
+}
+.commande_item:nth-child(odd){
+    background-color:darkgrey;
+}
+.commande_item:nth-child(even){
+    background-color:grey;
+}
+.commande_item{
+    border:1px solid black;
+}
+.commande_item td{
+    width:33%;
+    text-align:center;
+    border:1px solid black;
+}

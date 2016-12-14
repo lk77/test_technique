@@ -22,5 +22,18 @@ class ProduitRepository extends \Doctrine\ORM\EntityRepository {
 
         return $query->getResult();
     }
+    
+    public function findByTitre($titre) {
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $query = $qb->select('p')
+                        ->from('AppBundle:Produit', 'p')
+                        ->where('p.titre LIKE :titre')
+                        ->setParameter('titre', '%'.$titre.'%')->getQuery();
+
+        return $query->getResult();
+    }
+    
+    
 
 }
