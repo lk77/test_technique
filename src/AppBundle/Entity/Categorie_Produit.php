@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categorie_Produit
  *
  * @ORM\Table(name="categorie_produit")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategorieProduitRepository")
+ * @ORM\Entity()
  */
 class Categorie_Produit
 {
@@ -27,7 +27,7 @@ class Categorie_Produit
     private $categorie;
 
     /**
-     * @ORM\OneToOne(targetEntity="Produit", inversedBy="categorieP"))
+     * @ORM\ManyToOne(targetEntity="Produit", inversedBy="categorieP"))
      */
     private $produit;
 

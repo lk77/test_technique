@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Caracteristiques list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Format</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for caracteristique in caracteristiques %}
+            <tr>
+                <td><a href="{{ path('caracteristique_show', { 'id': caracteristique.id }) }}">{{ caracteristique.id }}</a></td>
+                <td>{{ caracteristique.nom }}</td>
+                <td>{{ caracteristique.format }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('caracteristique_show', { 'id': caracteristique.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

@@ -1,7 +1,6 @@
 easy_admin:
     site_name: 'Panel Admin'
     design:
-        #brand_color: 'darkgreen'
         brand_color: 'rgb(255, 153, 0)'
         color_scheme: 'light'
         form_theme: 'vertical'
@@ -10,7 +9,7 @@ easy_admin:
         #c3 : rgb(255, 102, 0)
         #c4 : rgb(255, 255, 209)
         templates:
-            layout: '@AdminBundle/Resources/view/layout.html.twig'
+            layout: '@AdminBundle/layout.html.twig'
         assets:
             css:
                 - 'bundles/admin/css/admin.css'
@@ -24,8 +23,7 @@ easy_admin:
             - { entity: 'Produit', icon: 'shopping-cart' }
             - { entity: 'Commande', icon: 'credit-card' }
             - { label: 'Monitoring' }
-            - { label: '30 derniers jours', url: '/test_technique/web/app_dev.php/admin/analytics/', icon: 'area-chart' }
-            
+            - { label: '30 derniers jours', url: '/test_technique/web/app_dev.php/admin/analytics/', icon: 'area-chart' }      
     list:
         actions:
             - { name: 'show', icon: 'search', label: '' }
@@ -95,7 +93,7 @@ easy_admin:
                     - { property: 'description', type: 'textarea'}
                     - prix
                     - quantite
-                    - { property: 'categorieP', label: 'Catégorie', type: 'entity', type_options: { class: 'AppBundle\Entity\Categorie', multiple: false, attr: { data-widget: 'select2' } }  }
+                    - { property: 'categorieP', label: 'Catégorie', type: 'collection', type_options: {entry_type: 'AdminBundle\Form\CategoriePType',entry_options:  {label: false}, by_reference: false }  }
                     - { property: 'imageFile', type: 'vich_image' }
                     - { property: 'caracteristiqueP', label: 'Caracteristique', type: 'collection', type_options: { entry_type: 'AdminBundle\Form\CaracteristiquePType',entry_options:  {label: false}, by_reference: false } }  
         Utilisateur:

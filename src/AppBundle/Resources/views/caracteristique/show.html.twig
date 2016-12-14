@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Caracteristique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ caracteristique.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ caracteristique.nom }}</td>
+            </tr>
+            <tr>
+                <th>Format</th>
+                <td>{{ caracteristique.format }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('caracteristique_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

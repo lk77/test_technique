@@ -1,0 +1,6 @@
+app:
+    menu:
+        - {name: 'Panel Admin', route: 'easyadmin' , is_granted: 'ROLE_ADMIN'}
+        - {name: 'Produits', route: 'produit_index' , is_granted: 'IS_AUTHENTICATED_ANONYMOUSLY'}
+        
+           

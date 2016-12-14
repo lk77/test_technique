@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block javascript %}
             {% javascripts
     '@jquery_js'
@@ -13,7 +14,8 @@
         {% block stylesheet %}
             {% stylesheets
     '@bootstrap_css'
-    '@AppBundle/Resources/public/css/style.css'
+    'bundles/app/css/style.css'
+    'bundles/app/css/menu.css'
     output='css/main.css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -29,52 +31,10 @@
     </head>
     <body>
         <div class="no-padding" style="height:100%;">
-            <div class="menu">
-                <nav class="navbar navbar-inverse">
-                    <div class="container-fluid no-padding">  
-                        <div class="collapse navbar-collapse no-padding"> 
-                            <ul class="nav navbar-nav">
-                                <li class="logo">
-                                    {% image '@AppBundle/Resources/public/images/logo.png' output='images/logo.png'%}
-                                    <img src="{{ asset_url }}"  width="150" alt="logo"></li>
-                                    {% endimage %}
-                                <li><a href="{{path('produit_index')}}">Produits</a></li>
-                                    
-                                    {#% render path('panierachat_menu') %#}
-                                {#<li><a href="{{path('sil04_vitrine_mentions')}}">Mentions légales</a></li>#}
-
-                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <li><a href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a></li>
-                                    <li> 
-                                        <a href="{{ path('fos_user_profile_edit') }}">
-                                            Mon profil
-                                        </a>
-                                    </li>
-                                    <li> 
-                                        <a href="{{ path('commande') }}">
-                                            Mes commandes
-                                        </a>
-                                    </li>
-                                    {% else %}
-                                    <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
-                                    {% endif %}
-                                    {% if is_granted("ROLE_ADMIN") %}
-                                    <li style="background-color:darkred;"><a href="{{path('categorie')}}">Catégories[ADMIN]</a></li>
-                                    <li style="background-color:darkred;"><a href="{{path('commande_list')}}">Commandes[ADMIN]</a></li>
-                                    {% endif %}
-
-                            </ul>
-                        </div>
-                    </div> 
-                </nav>
-            </div>
-            <div class="border-contenu" style="height:100%;">
-                <div class="contenu" style="height:100%;">
-                    {% block contenu %}
+            {% include '@AppBundle/menu.html.twig' %}
+            <div class="/*border-contenu*/">
+                    {% block content %}
                     {% endblock %}  
-                </div>
             </div>
         </div>
     </body>

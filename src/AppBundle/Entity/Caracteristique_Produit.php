@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Caracteristique_Produit
  *
  * @ORM\Table(name="caracteristique_produit")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Caracteristique_ProduitRepository")
+ * @ORM\Entity()
  */
 class Caracteristique_Produit
 {

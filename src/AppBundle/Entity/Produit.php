@@ -49,7 +49,7 @@ class Produit {
      * @var File
      */
     private $imageFile;
-    
+
     /**
      * @ORM\Column(type="datetime")
      * @var \DateTime
@@ -76,7 +76,7 @@ class Produit {
     private $commandeP;
 
     /**
-     * @ORM\OneToOne(targetEntity="Categorie_Produit", mappedBy="produit",cascade={"persist","remove"},orphanRemoval=true))
+     * @ORM\OneToMany(targetEntity="Categorie_Produit", mappedBy="produit",cascade={"persist","remove"},orphanRemoval=true))
      */
     private $categorieP;
 
@@ -90,10 +90,11 @@ class Produit {
      */
     public function __construct() {
         $this->commandeP = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorieP = new \Doctrine\Common\Collections\ArrayCollection();
         $this->caracteristiqueP = new \Doctrine\Common\Collections\ArrayCollection();
         $this->updatedAt = new \DateTime('now');
     }
-    
+
     public function __toString() {
         return $this->titre;
     }
@@ -151,27 +152,23 @@ class Produit {
         return $this->description;
     }
 
-    public function setImageFile(File $image = null)
-    {
+    public function setImageFile(File $image = null) {
         $this->imageFile = $image;
-        
+
         if ($image) {
             $this->updatedAt = new \DateTime('now');
         }
     }
 
-    public function getImageFile()
-    {
+    public function getImageFile() {
         return $this->imageFile;
     }
 
-    public function setImageUrl($imageUrl)
-    {
+    public function setImageUrl($imageUrl) {
         $this->imageUrl = $imageUrl;
     }
 
-    public function getImageUrl()
-    {
+    public function getImageUrl() {
         return $this->imageUrl;
     }
 
@@ -249,25 +246,57 @@ class Produit {
     public function getCommandeP() {
         return $this->commandeP;
     }
+    
+    /**
+     * Add CategorieP
+     *
+     * @param \AppBundle\Entity\Commande_Produit $CategorieP
+     *
+     * @return Produit
+     */
+    public function addCategorieP(\AppBundle\Entity\Categorie_Produit $categorieP) {
+        $this->categorieP[] = $categorieP;
+
+        return $this;
+    }
 
     /**
-     * Set categorieP
+     * Remove categorieP
+     *
+     * @param \AppBundle\Entity\Categorie_Produit $CategorieP
+     */
+    public function removeCategorieP(\AppBundle\Entity\Categorie_Produit $categorieP) {
+        $this->categorieP->removeElement($categorieP);
+    }
+
+    /**
+     * Add categorie
      *
      * @param \AppBundle\Entity\Categorie $categorie
      *
      * @return Produit
      */
-    public function setCategorieP(\AppBundle\Entity\Categorie $categorie = null) {
-        if ($this->categorieP == null) {
-            $categorieP = new Categorie_Produit();
-            $categorieP->setProduit($this);
-            $categorieP->setCategorie($categorie);
-            $this->categorieP = $categorieP;
-        } else {
-            $this->categorieP->setCategorie($categorie);
-        }
+    public function addCategorie(\AppBundle\Entity\Categorie $categorie = null) {
+        $categorieP = new Categorie_Produit();
+        $categorieP->setProduit($this);
+        $categorieP->setCategorie($categorie);
+        $this->categorieP[] = $categorieP;
 
         return $this;
+    }
+    
+    /**
+     * Remove categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     */
+    public function removeCategorie(\AppBundle\Entity\Categorie $categorie)
+    {
+        foreach($this->categorieP as $categorieP){
+            if($categorieP->getCategorie()->getId() == $categorie->getId()){
+                $this->categorieP->removeElement($categorieP);
+            }
+        }
     }
 
     /**
@@ -276,11 +305,7 @@ class Produit {
      * @return \AppBundle\Entity\Categorie
      */
     public function getCategorieP() {
-        if ($this->categorieP == null) {
-            return null;
-        } else {
-            return $this->categorieP->getCategorie();
-        }
+        return $this->categorieP;
     }
 
     /**
@@ -314,7 +339,6 @@ class Produit {
         return $this->caracteristiqueP;
     }
 
-
     /**
      * Set updatedAt
      *
@@ -322,8 +346,7 @@ class Produit {
      *
      * @return Produit
      */
-    public function setUpdatedAt($updatedAt)
-    {
+    public function setUpdatedAt($updatedAt) {
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -334,8 +357,8 @@ class Produit {
      *
      * @return \DateTime
      */
-    public function getUpdatedAt()
-    {
+    public function getUpdatedAt() {
         return $this->updatedAt;
     }
+
 }

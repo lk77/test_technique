@@ -69,6 +69,10 @@ class ProduitController extends BaseAdminController {
                 $caracteristique->setProduit($entity);
                 $this->em->persist($caracteristique);
             }
+            foreach ($entity->getCategorieP() as $categorieP) {
+                $categorieP->setProduit($entity);
+                $this->em->persist($categorieP);
+            }
 
             $this->em->flush();
 

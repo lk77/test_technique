@@ -1,0 +1,7 @@
+{
+  "name": "admin",
+  "main": "index.css",
+  "_source": "/var/www/test_technique/src/AdminBundle/Resources/public/css/admin.css",
+  "_target": "*",
+  "_originalSource": "../../public/css/admin.css"
+}

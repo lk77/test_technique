@@ -51,7 +51,7 @@ class AnalyticsController extends Controller {
             $highcharts[$id] = $ob;
         }
 
-        return $this->render('@AdminBundle/Resources/view/Analytics/index.html.twig', array('highcharts' => $highcharts));
+        return $this->render('@AdminBundle/analytics/index.html.twig', array('highcharts' => $highcharts));
     }
 
 }

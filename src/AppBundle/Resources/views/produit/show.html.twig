@@ -1,0 +1,44 @@
+{% extends "@AppBundle/layout.html.twig" %}
+
+{% block content %}
+    <div class="message"><p>Produit</p></div>
+    <div class="message">
+        <ul class="produit_action">
+            <li>
+                <a class="produit_show" href="{{ path('produit_index') }}">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <table class="produit_list">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ produit.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Image_url</th>
+                <td>{{ produit.imageurl }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ produit.quantite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}
